@@ -3,12 +3,14 @@
 
 int main() {
     
+    const int NUM_DNA_STRANDS = 2;
+    
     while (1) {
         
-        char dna[2][100];
-        int is_not_valid = 0;
+        char dna[NUM_DNA_STRANDS][100];
+        int is_valid = 1;
         
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < NUM_DNA_STRANDS; i++) {
             printf("strand %d of DNA:\t", i + 1);
             scanf("%s", dna[i]);
             
@@ -19,7 +21,7 @@ int main() {
             
             for (int j = 0; j < strlen(dna[i]); j++) {
                 if (dna[i][j] != 'A' && dna[i][j] != 'C' && dna[i][j] != 'G' && dna[i][j] != 'T') {
-                    is_not_valid = 1;
+                    is_valid = 0;
                     break;
                 }
             }
@@ -28,7 +30,7 @@ int main() {
         int d1 = strlen(dna[0]);
         int d2 = strlen(dna[1]);
         
-        if (is_not_valid) {
+        if (!is_valid) {
             printf("Input is limited to A, C, G, T. Try again.\n\n");
             continue;
         }
